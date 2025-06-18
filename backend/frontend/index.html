@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows Server Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <header class="mb-8">
+            <h1 class="text-4xl font-bold text-gray-900">Windows Server Assistant</h1>
+            <p class="text-gray-600 mt-2">Intelligent assistant for Windows Server management and penetration testing</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- System Info Card -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-semibold mb-4">System Information</h2>
+                <div id="systemInfo" class="space-y-2">
+                    <p class="text-gray-600">Loading system information...</p>
+                </div>
+                <button onclick="fetchSystemInfo()" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors">
+                    Refresh Info
+                </button>
+            </div>
+
+            <!-- Chat Interface -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-semibold mb-4">Chat Interface</h2>
+                <div class="space-y-4">
+                    <div id="chatMessages" class="h-96 overflow-y-auto border rounded-lg p-4 space-y-4 bg-gray-50">
+                        <p class="text-gray-400 text-center text-sm italic">Type a message to begin your conversation...</p>
+                    </div>
+                    <div class="flex space-x-2 mt-4">
+                        <input type="text" id="messageInput" 
+                               class="flex-1 border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                               placeholder="Type your message...">
+                        <button onclick="sendMessage()" 
+                                class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2">
+                            <span>Send</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function fetchSystemInfo() {
+            try {
+                const response = await fetch('/api/system/info');
+                const data = await response.json();
+                const systemInfoDiv = document.getElementById('systemInfo');
+                systemInfoDiv.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-600">CPU Usage</span>
+                                <span class="font-semibold">${data.cpu.percent.toFixed(1)}%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-blue-600 h-2 rounded-full" style="width: ${data.cpu.percent}%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-600">Memory Usage</span>
+                                <span class="font-semibold">${data.memory.percent.toFixed(1)}%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-600 h-2 rounded-full" style="width: ${data.memory.percent}%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-600">Disk Usage</span>
+                                <span class="font-semibold">${(data.disk[0]?.percent || 0).toFixed(1)}%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-yellow-600 h-2 rounded-full" style="width: ${data.disk[0]?.percent || 0}%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-t pt-4 mt-4">
+                            <p class="text-sm text-gray-600">
+                                <span class="font-medium">Operating System:</span> ${data.os.name} ${data.os.version}
+                            </p>
+                            <p class="text-sm text-gray-600 mt-1">
+                                <span class="font-medium">Architecture:</span> ${data.os.architecture}
+                            </p>
+                        </div>
+                    </div>
+                `;
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value;
+            if (!message) return;
+
+            try {
+                const response = await fetch('/api/chat/message', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message: message }),
+                });
+                const data = await response.json();
+                
+                const chatMessages = document.getElementById('chatMessages');
+                chatMessages.innerHTML += `
+                    <div class="flex flex-col space-y-4">
+                        <div class="flex flex-col items-end space-y-1">
+                            <div class="bg-blue-600 text-white p-3 rounded-lg max-w-[80%] shadow-sm">
+                                ${message}
+                            </div>
+                            <span class="text-xs text-gray-500">${new Date().toLocaleTimeString()}</span>
+                        </div>
+                        <div class="flex flex-col items-start space-y-1">
+                            <div class="bg-gray-200 text-gray-800 p-3 rounded-lg max-w-[80%] shadow-sm">
+                                ${data.message}
+                            </div>
+                            <span class="text-xs text-gray-500">${new Date().toLocaleTimeString()}</span>
+                        </div>
+                    </div>
+                `;
+                
+                input.value = '';
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // Initial system info fetch
+        fetchSystemInfo();
+
+        // Handle Enter key in message input
+        document.getElementById('messageInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>
