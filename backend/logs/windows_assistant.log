@@ -1,0 +1,45 @@
+2025-06-18 13:17:51 | INFO     | app.core.logging:setup_logging:45 - Logging system initialized
+2025-06-18 13:17:51 | INFO     | app.core.security:setup_security:103 - Security setup completed
+2025-06-18 13:17:51 | WARNING  | app.main:<module>:68 - Frontend static files not found. Serving API only.
+2025-06-18 13:18:13 | INFO     | app.core.logging:setup_logging:45 - Logging system initialized
+2025-06-18 13:18:13 | INFO     | app.core.security:setup_security:103 - Security setup completed
+2025-06-18 13:18:13 | WARNING  | app.main:<module>:68 - Frontend static files not found. Serving API only.
+2025-06-18 13:18:35 | INFO     | app.core.logging:setup_logging:45 - Logging system initialized
+2025-06-18 13:18:35 | INFO     | app.core.security:setup_security:103 - Security setup completed
+2025-06-18 13:18:35 | WARNING  | app.main:<module>:68 - Frontend static files not found. Serving API only.
+2025-06-18 13:18:59 | INFO     | app.core.logging:setup_logging:45 - Logging system initialized
+2025-06-18 13:18:59 | INFO     | app.core.security:setup_security:103 - Security setup completed
+2025-06-18 13:18:59 | WARNING  | app.main:<module>:68 - Frontend static files not found. Serving API only.
+2025-06-18 13:19:14 | INFO     | app.core.logging:setup_logging:45 - Logging system initialized
+2025-06-18 13:19:14 | INFO     | app.core.security:setup_security:103 - Security setup completed
+2025-06-18 13:19:14 | WARNING  | app.main:<module>:68 - Frontend static files not found. Serving API only.
+2025-06-18 13:19:27 | INFO     | app.core.logging:setup_logging:45 - Logging system initialized
+2025-06-18 13:19:27 | INFO     | app.core.security:setup_security:103 - Security setup completed
+2025-06-18 13:19:27 | WARNING  | app.main:<module>:68 - Frontend static files not found. Serving API only.
+2025-06-18 13:19:49 | INFO     | app.core.logging:setup_logging:45 - Logging system initialized
+2025-06-18 13:19:49 | INFO     | app.core.security:setup_security:103 - Security setup completed
+2025-06-18 13:19:49 | WARNING  | app.main:<module>:68 - Frontend static files not found. Serving API only.
+2025-06-18 13:20:07 | INFO     | app.core.logging:setup_logging:45 - Logging system initialized
+2025-06-18 13:20:07 | INFO     | app.core.security:setup_security:103 - Security setup completed
+2025-06-18 13:20:22 | INFO     | app.core.logging:setup_logging:45 - Logging system initialized
+2025-06-18 13:20:22 | INFO     | app.core.security:setup_security:103 - Security setup completed
+2025-06-18 13:22:35 | INFO     | app.core.logging:setup_logging:45 - Logging system initialized
+2025-06-18 13:22:35 | INFO     | app.core.security:setup_security:103 - Security setup completed
+2025-06-18 13:23:09 | INFO     | app.core.logging:setup_logging:45 - Logging system initialized
+2025-06-18 13:23:09 | INFO     | app.core.security:setup_security:103 - Security setup completed
+2025-06-18 13:23:32 | INFO     | app.core.logging:setup_logging:45 - Logging system initialized
+2025-06-18 13:23:32 | INFO     | app.core.security:setup_security:103 - Security setup completed
+2025-06-18 13:23:57 | INFO     | app.core.logging:setup_logging:45 - Logging system initialized
+2025-06-18 13:23:57 | INFO     | app.core.security:setup_security:103 - Security setup completed
+2025-06-18 13:25:26 | INFO     | app.core.logging:setup_logging:45 - Logging system initialized
+2025-06-18 13:25:26 | INFO     | app.core.security:setup_security:103 - Security setup completed
+2025-06-18 13:25:43 | INFO     | app.core.logging:setup_logging:45 - Logging system initialized
+2025-06-18 13:25:43 | INFO     | app.core.security:setup_security:103 - Security setup completed
+2025-06-18 13:27:14 | INFO     | app.core.logging:setup_logging:45 - Logging system initialized
+2025-06-18 13:27:14 | INFO     | app.core.security:setup_security:103 - Security setup completed
+2025-06-18 13:27:58 | INFO     | app.core.logging:setup_logging:45 - Logging system initialized
+2025-06-18 13:27:58 | INFO     | app.core.security:setup_security:103 - Security setup completed
+2025-06-18 13:28:24 | INFO     | app.core.logging:setup_logging:45 - Logging system initialized
+2025-06-18 13:28:24 | INFO     | app.core.security:setup_security:103 - Security setup completed
+2025-06-18 13:29:02 | INFO     | app.core.logging:setup_logging:45 - Logging system initialized
+2025-06-18 13:29:02 | INFO     | app.core.security:setup_security:103 - Security setup completed
